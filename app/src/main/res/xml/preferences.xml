@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sleepassistant="http://sleepassistant.com">
+    <PreferenceCategory android:title="@string/pref_cat_sleep">
+
+        <RingtonePreference
+            android:ringtoneType="alarm"
+            android:showSilent="false"
+            android:title="@string/pref_melody"
+            android:summary="@string/pref_melody_sum"
+            android:key="melodyPreference"
+            android:showDefault="true"
+            android:defaultValue="content://settings/system/alarm_alert"/>
+        <com.bp.droppa.sleepassistant.settings.TimePreference
+            android:title="@string/pref_length"
+            android:key="lengthPreference"
+            android:summary="@string/pref_length_sum"
+            android:defaultValue="28800000"/>
+
+        <Preference
+            android:title="Sensor Calibration"
+            android:key="sensorPreference"/>
+
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_cat_baby">
+
+        <Preference
+            android:title="@string/pref_parrent_number"
+            android:key="numberPreference" />
+
+        <Preference
+            android:title="@string/pref_micro"
+            android:summary="@string/pref_micro_sum"
+            android:key="microphonePreference" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bp.droppa.sleepassistant">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+
+    <uses-feature
+        android:name="CALL_PHONE"
+        android:required="true" />
+
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.bp.droppa.sleepassistant.sleep_monitor.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+
+            <!-- zabrani vytvoreniu novej aktivity po spusteni z notifikacie -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.bp.droppa.sleepassistant.settings.MicTestActivity"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" />
+
+        <service
+            android:name="com.bp.droppa.sleepassistant.baby_monitor.NoiseDecService"
+            android:exported="false">
+
+            <!-- zabranuje vyditelnosti service mimo aplikaciu -->
+        </service>
+        <service
+            android:name="com.bp.droppa.sleepassistant.sleep_monitor.MoveDecService"
+            android:exported="false">
+
+            <!-- zabranuje vyditelnosti service mimo aplikaciu -->
+        </service>
+
+        <activity
+            android:name="com.bp.droppa.sleepassistant.sleep_monitor.StatsActivity"
+            android:label="@string/title_activity_stats">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bp.droppa.sleepassistant.sleep_monitor.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.bp.droppa.sleepassistant.baby_monitor.RadioActivity"
+            android:label="@string/title_activity_radio"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bp.droppa.sleepassistant.sleep_monitor.AlarmActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/title_activity_alarm"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bp.droppa.sleepassistant.sleep_monitor.SleepActivity"
+            android:label="@string/title_activity_sleep"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.bp.droppa.sleepassistant.settings.SettingsActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bp.droppa.sleepassistant.sleep_monitor.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.bp.droppa.sleepassistant.settings.CalibrationActivity"
+            android:label="@string/title_activity_calibration">
+
+            </activity>
+    </application>
+
+</manifest>
